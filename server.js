@@ -16,14 +16,14 @@ const server = http.createServer((req, res) => {
         fs.readFile(url.substr(1, url.length) + '.html', function (err, data) {
             if (!err) {
                 res.writeHead(200, { 'Content-Type': 'text/html', });
-                data = data.replace(/\{\{name\}\}/g, "123")
+                data = data.toString().replace("{{name}}", "Alexandr")
                 res.write(data)
                 res.end();
             } else {
                 fs.readFile('404.html', function (err, data) {
                     res.writeHead(400, { 'Content-Type': 'text/html', });
-                    res.write(data)
-                    res.end();
+                    // res.write(data)
+                    res.end(data);
                 }
                 );
             }
