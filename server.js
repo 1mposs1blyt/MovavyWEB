@@ -16,6 +16,7 @@ const server = http.createServer((req, res) => {
         fs.readFile(url.substr(1, url.length) + '.html', function (err, data) {
             if (!err) {
                 res.writeHead(200, { 'Content-Type': 'text/html', });
+                data = data.replace(/\{\{name\}\}/g, "123")
                 res.write(data)
                 res.end();
             } else {
